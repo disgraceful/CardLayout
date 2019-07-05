@@ -3,48 +3,50 @@
   padding: 0;
   box-sizing: border-box;
 }
+:root{
+  --main-bg-color: #264d73;
+  --blue: #4d88ff;
+}
 
 body {
   font-family: "Roboto", sans-serif;
-  background-color: #264d73;
+  background-color: var(--main-bg-color);
 }
 
 .wrapper {
-
   display: grid;
-  grid-template-columns: [left-gutter] 1fr [sidebar] 6fr [main-content] 11fr [right-gutter] 1fr;
-  grid-template-rows: [header] auto [nav] auto [main-1] 14fr [main-2] 14fr;
+  padding: 1.4rem;
+  grid-template-columns: minmax(320px, 1fr);
+  grid-template-rows: [header] auto [nav] auto;
+  grid-auto-rows: auto;
   grid-gap: 1.2rem;
 }
 
 header {
   text-align: center;
-  padding-top: 1.2rem;
-  padding-right: 1.2rem;
-  padding-left: 1.2rem;
+  padding: 0 1.2rem;
   color: #fff;
   grid-row: header;
-  grid-column: sidebar/right-gutter;
 }
 
 header h1 {
-  font-size: 2.3rem;
+  font-size: 2rem;
   font-weight: 500;
 }
 
 nav {
-  padding: 1rem;
+  padding: 1rem 0.7rem;
   background-color: #f2f2f2;
   grid-row: nav;
-  grid-column: sidebar/right-gutter;
+  border-top: 3px solid var(--blue);
+  border-radius: 4px;
 }
 
 nav ul {
   list-style: none;
-  font-size: 0.8rem;
+  font-size: 0.95rem;
   display: flex;
   justify-content: space-evenly;
-  flex-wrap: wrap;
 }
 
 nav li {
@@ -53,22 +55,41 @@ nav li {
 
 nav a {
   text-decoration: none;
-  color: inherit;
+  color: var(--blue);
+  position: relative;
+}
+
+nav a::after{
+  content:"";
+  height: 1px;
+  width: 100%;
+  background-color: var(--blue);
+  position: absolute;
+  bottom: -2px;
+  left:0;
+  transform: scaleX(0);
+  visibility: hidden;
+  transition: 0.2s;
+
+}
+
+nav a:hover::after{
+  transform: scaleX(1);
+  visibility: visible;
 }
 
 .wrapper > div {
   background-color: #f2f2f2;
   padding: 1em;
+  border-radius: 4px;
 }
 
 .sidebar-1 {
-  grid-row: main-1/main-2;
-  grid-column: sidebar;
+  grid-column: 1;
 }
 
 .sidebar-2 {
-  grid-row: main-2/bottom-gutter;
-  grid-column: sidebar;
+  grid-column: 1;
 }
 
 .sidebar-2 .img-container {
@@ -83,16 +104,17 @@ img {
 
 .main-content {
   display: grid;
-  grid-row: main-1/bottom-gutter;
-  grid-column: main-content;
-  grid-template-columns: [image] 7fr [bio] 8fr;
-  grid-template-rows: [content-1] 1fr [content-2] 1fr [content-3] 1fr;
+  grid-column: 1;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
   grid-gap: 1.2rem;
 }
 
-.image-content {
-  grid-row: content-1/bottom-gutter;
-  grid-column: image;
+.image-content,
+.bio-content-1,
+.bio-content-2,
+.bio-content-3 {
+  grid-column: 1;
 }
 
 .image-content .img-container {
@@ -100,28 +122,64 @@ img {
   margin: 0 auto;
 }
 
-.image-content img{
-   border-radius: 50%;
+.image-content img {
+  border-radius: 50%;
 }
 
-.bio-content-1 {
-  grid-row: content-1/content-2;
-  grid-column: bio;
+.bio {
+  box-shadow: 6px 12px 6px rgba(0, 0, 0, 0.1);
 }
 
-.bio-content-2 {
-  grid-row: content-2/content-3;
-  grid-column: bio;
-}
+@media (min-width: 768px) {
+  nav{
+    padding: 1rem;
+  }
+  nav ul {
+    font-size: 1.3rem;
+  }
+  .wrapper {
+    grid-template-columns: [left-gutter] 1fr [sidebar] 6fr [main-content] 11fr [right-gutter] 1fr;
+    grid-template-rows: [header] auto [nav] auto [main-1] 1fr [main-2] 1fr;
+  }
+  header {
+    grid-column: sidebar/right-gutter;
+  }
+  header h1 {
+    font-size: 2.3rem;
+  }
+  nav {
+    grid-column: sidebar/right-gutter;
+  }
+  .sidebar-1 {
+    grid-row: main-1/main-2;
+    grid-column: sidebar;
+  }
+  .sidebar-2 {
+    grid-row: main-2/bottom-gutter;
+    grid-column: sidebar;
+  }
+  .main-content {
+    grid-row: main-1/bottom-gutter;
+    grid-column: main-content;
+    grid-template-columns: [image] 7fr [bio] 8fr;
+    grid-template-rows: [content-1] 1fr [content-2] 1fr [content-3] 1fr;
+  }
+  .bio-content-1 {
+    grid-row: content-1/content-2;
+    grid-column: bio;
+  }
 
-.bio-content-3 {
-  grid-row: content-3/span 2;
-  grid-column: bio;
-}
+  .bio-content-2 {
+    grid-row: content-2/content-3;
+    grid-column: bio;
+  }
 
-
-@media (min-width: 768px){
-    nav ul{
-        font-size: 1.3rem;
-    }
+  .bio-content-3 {
+    grid-row: content-3/span 2;
+    grid-column: bio;
+  }
+  .image-content {
+    grid-row: content-1/bottom-gutter;
+    grid-column: image;
+  }
 }
