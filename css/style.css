@@ -47,7 +47,7 @@ img {
 
 .wrapper p {
   color: var(--black);
-  margin-bottom: 2.2rem;
+  margin-bottom: 1.9rem;
 }
 
 header {
@@ -74,11 +74,14 @@ nav ul {
   list-style: none;
   font-size: 0.95rem;
   display: flex;
-  justify-content: space-evenly;
+  flex-flow: row wrap;
 }
 
 nav li {
   display: inline-block;
+  padding: 0.25rem 0.4rem;
+  flex: 1 1 30%;
+  text-align: center;
 }
 
 .underlined-link {
@@ -120,7 +123,7 @@ nav li {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
-  grid-gap: 1.2rem;
+  grid-gap: 1.3rem;
 }
 
 .image-content .img-container {
@@ -147,6 +150,10 @@ nav li {
   border-radius: 0 0 4px 4px;
 }
 
+.link-container .underlined-link {
+  --color: var(--lwhite);
+}
+
 .bio-content-2 h3 {
   background-color: var(--blue);
   color: var(--lwhite);
@@ -157,6 +164,15 @@ nav li {
 
 .bio-content-3 {
   border-top: 3px solid var(--blue);
+}
+
+@media (min-width: 340px) {
+  nav ul {
+    justify-content: space-around;
+  }
+  nav li {
+    flex: 0 1;
+  }
 }
 
 @media (min-width: 768px) {
