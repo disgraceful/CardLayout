@@ -10,6 +10,7 @@
   --lwhite: #f2f2f2;
   --black: #34495e;
   --orange: #ff9933;
+  --red: #e74c3c;
 }
 
 body {
@@ -17,10 +18,15 @@ body {
   background-color: var(--main-bg-color);
 }
 
+img {
+  width: 100%;
+  height: auto;
+}
+
 .wrapper {
   display: grid;
-  padding: 1.4rem;
-  grid-template-columns: minmax(320px, 1fr);
+  padding: 1.2rem;
+  grid-template-columns: minmax(min-content, 1fr);
   grid-template-rows: [header] auto [nav] auto;
   grid-auto-rows: auto;
   grid-gap: 1.2rem;
@@ -41,7 +47,7 @@ body {
 
 .wrapper p {
   color: var(--black);
-  margin-bottom: 2.6rem;
+  margin-bottom: 2.2rem;
 }
 
 header {
@@ -57,7 +63,7 @@ header h1 {
 }
 
 nav {
-  padding: 1rem 0.7rem;
+  padding: 1rem 0.5rem;
   background-color: var(--lwhite);
   grid-row: nav;
   border-top: 3px solid var(--blue);
@@ -104,35 +110,23 @@ nav li {
   --color: var(--orange);
 }
 
-.sidebar-2 .img-container {
-  max-width: 220px;
+.sidebar .img-container {
+  max-width: 200px;
   padding: 0.5rem;
   margin: 0 auto;
 }
 
-img {
-  width: 100%;
-  height: auto;
-}
-
 .main-content {
   display: grid;
-  grid-column: 1;
   grid-template-columns: 1fr;
   grid-template-rows: auto;
   grid-gap: 1.2rem;
 }
 
-.image-content,
-.bio-content-1,
-.bio-content-2,
-.bio-content-3 {
-  grid-column: 1;
-}
-
 .image-content .img-container {
   width: 250px;
   margin: 0 auto;
+  padding-bottom: 1.2rem;
 }
 
 .image-content img {
@@ -140,7 +134,29 @@ img {
 }
 
 .bio {
-  box-shadow: 6px 12px 6px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  border-radius: 4px;
+  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+}
+
+.bio-content-1 .link-container {
+  background-color: var(--red);
+  padding: 0.5rem 1.5rem;
+  margin: 0 -1rem -1rem -1rem;
+  border-radius: 0 0 4px 4px;
+}
+
+.bio-content-2 h3 {
+  background-color: var(--blue);
+  color: var(--lwhite);
+  margin: -1rem -1rem 0.87rem -1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 4px 4px 0 0;
+}
+
+.bio-content-3 {
+  border-top: 3px solid var(--blue);
 }
 
 @media (min-width: 768px) {
