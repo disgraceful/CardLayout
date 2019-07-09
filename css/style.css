@@ -73,15 +73,14 @@ nav {
 nav ul {
   list-style: none;
   font-size: 0.95rem;
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(90px,1fr));
 }
 
 nav li {
   display: inline-block;
-  padding: 0.25rem 0.4rem;
-  flex: 1 1 30%;
-  text-align: center;
+  padding: 0.25rem 0;
+  text-align:center;
 }
 
 .underlined-link {
@@ -127,7 +126,7 @@ nav li {
 }
 
 .image-content .img-container {
-  width: 250px;
+  max-width: 250px;
   margin: 0 auto;
   padding-bottom: 1.2rem;
 }
@@ -166,16 +165,7 @@ nav li {
   border-top: 3px solid var(--blue);
 }
 
-@media (min-width: 340px) {
-  nav ul {
-    justify-content: space-around;
-  }
-  nav li {
-    flex: 0 1;
-  }
-}
-
-@media (min-width: 540px) {
+@media (min-width: 580px) {
   nav {
     padding: 1rem;
   }
