@@ -63,7 +63,7 @@ header h1 {
 }
 
 nav {
-  padding: 1rem 0.5rem;
+  padding: 0.5rem;
   background-color: var(--lwhite);
   grid-row: nav;
   border-top: 3px solid var(--blue);
@@ -74,13 +74,13 @@ nav ul {
   list-style: none;
   font-size: 0.95rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(90px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
 }
 
 nav li {
   display: inline-block;
   padding: 0.25rem 0;
-  text-align:center;
+  text-align: center;
 }
 
 .underlined-link {
@@ -135,6 +135,35 @@ nav li {
   border-radius: 50%;
 }
 
+.theme-container {
+  padding: 1.2rem 0;
+  text-align: center;
+  display:grid;
+  grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
+  grid-gap: 0.5rem;
+}
+
+.theme-btn {
+  text-decoration: none;
+  color: var(--color, var(--lwhite));
+  background-color: var(--bg, var(--blue));
+  padding: 0.3rem;
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+.theme-btn:hover {
+  opacity: 1;
+}
+
+.theme-btn.dark {
+  --bg: var(--grey);
+}
+
+.theme-btn.light {
+  --bg: #ccc;
+  --color: var(--black);
+}
 .bio {
   padding: 1rem;
   border-radius: 4px;
