@@ -11,6 +11,8 @@
   --black: #34495e;
   --orange: #ff9933;
   --red: #e74c3c;
+  --shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
 }
 
 body {
@@ -25,17 +27,17 @@ img {
 
 .wrapper {
   display: grid;
-  padding: 1.2rem;
   grid-template-columns: minmax(min-content, 1fr);
   grid-template-rows: [header] auto [nav] auto;
   grid-auto-rows: auto;
   grid-gap: 1.2rem;
+  padding: 1.2rem;
   color: var(--grey);
 }
 
 .wrapper > div {
   background-color: var(--lwhite);
-  padding: 1em;
+  padding: 1rem;
   border-radius: 4px;
   border-top: 3px solid var(--blue);
 }
@@ -138,8 +140,8 @@ nav li {
 .theme-container {
   padding: 1.2rem 0;
   text-align: center;
-  display:grid;
-  grid-template-columns: repeat(auto-fit,minmax(50px,1fr));
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
   grid-gap: 0.5rem;
 }
 
@@ -152,6 +154,7 @@ nav li {
   opacity: 0.5;
 }
 
+.theme-btn.active,
 .theme-btn:hover {
   opacity: 1;
 }
@@ -167,8 +170,7 @@ nav li {
 .bio {
   padding: 1rem;
   border-radius: 4px;
-  box-shadow: 0px 3px 1px -2px rgba(0, 0, 0, 0.2),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 1px 5px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow);
 }
 
 .bio-content-1 .link-container {
@@ -203,7 +205,7 @@ nav li {
   }
   .wrapper {
     grid-template-columns: [sidebar] 4fr [main-content] 7fr;
-    grid-template-rows: [header] auto [nav] auto [main-1] auto [main-2]1fr;
+    grid-template-rows: [header] auto [nav] auto [main-1] auto [main-2] 1fr;
     align-items: flex-start;
   }
   header {
@@ -216,7 +218,7 @@ nav li {
     grid-column: span 2;
   }
   .sidebar-1 {
-    grid-row: main-1/main-2;
+    grid-row: main-1/ main-2;
     grid-column: sidebar;
   }
   .sidebar-2 {
@@ -235,37 +237,25 @@ nav li {
   .wrapper {
     grid-template-columns: [left-gutter] 1fr [sidebar] 6fr [main-content] 11fr [right-gutter] 1fr;
   }
-  header {
+  header,
+  nav {
     grid-column: sidebar/right-gutter;
   }
   header h1 {
     font-size: 2.3rem;
   }
-  nav {
-    grid-column: sidebar/right-gutter;
-  }
-  .sidebar-1 {
-    grid-row: main-1/main-2;
-  }
-  .sidebar-2 {
-    grid-row: main-2;
-  }
   .main-content {
-    grid-row: main-1/span 2;
     grid-template-columns: [image] 7fr [bio] 8fr;
     grid-template-rows: [content-1] auto [content-2] auto [content-3] auto;
   }
-
   .bio-content-1 {
     grid-row: content-1/content-2;
     grid-column: bio;
   }
-
   .bio-content-2 {
     grid-row: content-2/content-3;
     grid-column: bio;
   }
-
   .bio-content-3 {
     grid-row: content-3;
     grid-column: bio;
